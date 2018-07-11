@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Messenger</title>
+</head>
+<body>
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="registration"/>
+    </form>
+    {% if errors_list %}
+        <div style="color: DarkRed">
+    <p>errors:</p>
+    {% for error in errors_list %}
+        <p>--{{ error }}</p>
+    {% endfor %}
+        </div>
+    {% endif %}
+    <br>
+    <a href="/">have account?</a>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>user page</title>
+    {% load staticfiles %}
+</head>
+<body bgcolor="#f0ffff">
+<table>
+    <tr>
+        <td>
+            <form action="" method="get">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% if answer_list %}
+                <div style="color: ForestGreen">
+                    {% for answer in answer_list %}
+                        <p>--{{ answer }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <input type="submit" value="send"/>
+            </form>
+            <br>
+            <h3><a href="/">log out</a></h3></td>
+        <td>
+            <img src="{% static "shka.jpeg" %}" height="90%" width="90%" align="right"/></td>
+    </tr>
+</table>
+<hr>
+<p>&copy; Все права защищены 2018</p>
+</body>
+</html>
