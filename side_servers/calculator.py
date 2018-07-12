@@ -14,9 +14,15 @@ def config():
         logging.info("configuration failed, port set by default for: " + str(PORT))
 
 
+def reply_correction(data):
+    data = str(data)
+    if data[0] == 'b':
+        return data[2:len(data) - 1]
+    else:
+        return data
+
+
 def sum(s):
-    if s[0] == 'b':  # b'' reducing Y
-        s = s[2:(len(s) - 1)]
     s += "+"  # Y just for lulz
     ful_sum = 0
     length = len(s)
@@ -48,14 +54,11 @@ serv_sock.listen(10)
 while serv_sock:
     client_sock, client_addr = serv_sock.accept()
     logging.debug('connected by ' + str(client_addr))
-    s = ""
 
     data = client_sock.recv(1024)
     logging.debug('Received: ' + str(data))
-    s += str(data)
-
-    s = sum(s)
-    logging.debug("Sent:" + str(s))
+    s = sum(reply_correction(data))
 
     client_sock.sendall(str(s).encode())
+    logging.debug("Sent:" + str(s))
     client_sock.close()

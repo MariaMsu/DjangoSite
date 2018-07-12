@@ -21,45 +21,60 @@ def get_html(url):
     return response.read()
 
 
-def main():
-    log_format = '%(levelname)s: %(message)s'
-    logging.basicConfig(filename="", format=log_format, level=logging.DEBUG)
-    config()
-    log_format = '%(levelname)s: %(message)s'
-    logging.basicConfig(filename="", format=log_format, level=logging.DEBUG)
-    serv_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM, proto=0)
-    serv_sock.bind(('127.0.0.1', PORT))
-    serv_sock.listen(10)
-    try:
-        while serv_sock:
-            client_sock, client_addr = serv_sock.accept()
-            logging.debug('connected by ' + str(client_addr))
-            data = client_sock.recv(1024)
-            logging.debug('Received: ' + str(data))
-            page_link = str(data)
-
-            if page_link[0] == 'b':  # b'' reducing Y
-                page_link = page_link[2:(len(page_link) - 1)]
-            page_link = page_link.replace("https://vk.com", "https://m.vk.com")
-            page_link = page_link + "?offset={}"
-            posts = 0
-
-            html_code = str(get_html(page_link.format(str(posts))))
-            #print(1)
-            posts_list = re.findall(r'wall\d{1,}_\d{1,}', html_code)
-
-            while posts_list:
-                posts += 1
-                html_code = str(get_html(page_link.format(str(posts))))
-                #print(2)
-                posts_list = re.findall(r'wall\d{1,}_\d{1,}', html_code)
-
-            logging.debug("Sent:" + str(posts))
-            client_sock.sendall((str(posts)).encode())
-            client_sock.close()
-    except Exception:
-        logging.error("КОЗЛЫ СКОРМИЛИ СЕРВЕРУ-ПАРСЕРY КАКУЮ-ТО ДРЯНЬ")
+def reply_correction(data):
+    data = str(data)
+    if data[0] == 'b':
+        return data[2:len(data) - 1]
+    else:
+        return data
 
 
-if __name__ == '__main__':
-    main()
+def address_correction(link):
+    if link.startswith("https"):
+        return link
+    else:
+        return "https://" + link
+
+
+def posts(link, iterator):
+    link = link + "?offset={}"
+    html_code = str(get_html(link.format(str(iterator))))
+    return re.findall(r'wall\d{1,}_\d{1,}', html_code)
+
+
+def parser_itself(link):
+    link = link.replace("https://vk.com", "https://m.vk.com")
+    posts_iterator = 0
+    while posts(link, posts_iterator):
+        posts_iterator += 1
+    return posts_iterator
+
+
+
+log_format = '%(levelname)s: %(message)s'
+logging.basicConfig(filename="", format=log_format, level=logging.DEBUG)
+config()
+log_format = '%(levelname)s: %(message)s'
+logging.basicConfig(filename="", format=log_format, level=logging.DEBUG)
+serv_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM, proto=0)
+serv_sock.bind(('127.0.0.1', PORT))
+serv_sock.listen(10)
+try:
+    while serv_sock:
+        client_sock, client_addr = serv_sock.accept()
+        logging.debug('connected by ' + str(client_addr))
+        data = client_sock.recv(1024)
+        logging.debug('Received: ' + str(data))
+
+        page_link = address_correction(reply_correction(data))
+
+        posts_amount = parser_itself(page_link)
+
+        logging.debug("Sent:" + str(posts_amount))
+        client_sock.sendall((str(posts_amount)).encode())
+        client_sock.close()
+except Exception:
+    logging.error("КОЗЛЫ СКОРМИЛИ СЕРВЕРУ-ПАРСЕРY КАКУЮ-ТО ДРЯНЬ")
+
+
+
