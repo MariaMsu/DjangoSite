@@ -22,12 +22,14 @@ def index(request):
         try:
             client_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             client_sock.connect(('127.0.0.1', settings.PARSER_PORT))
-
             client_sock.sendall(link.encode())
             parse_result = client_sock.recv(1024)
             client_sock.close()
+            parse_result = str(parse_result)
+            if parse_result[0] == 'b':  # b'' reducing Y
+                parse_result = parse_result[2:(len(parse_result) - 1)]
             answer_list.append('number of posts:' + parse_result)
-            logging.debug("server_parser_reply:", parse_result)
+            logging.debug("server_parser_reply:" + str(parse_result))
         except Exception:
             logging.error("Сервер 'parser' устал и прилёг отдохнуть")
 
@@ -43,14 +45,13 @@ def index(request):
 
                 client_sock.sendall(expression.encode())
                 expression_result = client_sock.recv(1024)
+                client_sock.close()
                 expression_result = str(expression_result)
                 if expression_result.startswith('b'):
                     expression_result = expression_result[2:(len(expression_result) - 1)]
-
-                client_sock.close()
-                answer_list.append('answer:',expression_result)
-                logging.debug("expression:", expression)
-                logging.debug("server_calculator_reply:", expression_result)
+                answer_list.append('answer:' + expression_result)
+                logging.debug("expression:" + expression)
+                logging.debug("server_calculator_reply:" + expression_result)
             except Exception:
                 logging.error("Сервер 'calculator' устал и прилёг отдохнуть")
 

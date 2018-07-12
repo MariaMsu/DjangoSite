@@ -11,9 +11,9 @@ def config():
         from DjangoSite import settings
         global PORT
         PORT = settings.PARSER_PORT
-        print("port successfully configured for:", PORT)
+        logging.info("port successfully configured for: " + str(PORT))
     except Exception:
-        print("configuration failed, port set by default for:", PORT)
+        logging.info("configuration failed, port set by default for: " + str(PORT))
 
 
 def get_html(url):
@@ -22,6 +22,8 @@ def get_html(url):
 
 
 def main():
+    log_format = '%(levelname)s: %(message)s'
+    logging.basicConfig(filename="", format=log_format, level=logging.DEBUG)
     config()
     log_format = '%(levelname)s: %(message)s'
     logging.basicConfig(filename="", format=log_format, level=logging.DEBUG)
@@ -31,11 +33,10 @@ def main():
     try:
         while serv_sock:
             client_sock, client_addr = serv_sock.accept()
-            logging.debug('connected by ', client_addr)
-            page_link = ""
+            logging.debug('connected by ' + str(client_addr))
             data = client_sock.recv(1024)
-            logging.debug('Received: ', data)
-            page_link += str(data)
+            logging.debug('Received: ' + str(data))
+            page_link = str(data)
 
             if page_link[0] == 'b':  # b'' reducing Y
                 page_link = page_link[2:(len(page_link) - 1)]
@@ -44,19 +45,20 @@ def main():
             posts = 0
 
             html_code = str(get_html(page_link.format(str(posts))))
+            #print(1)
             posts_list = re.findall(r'wall\d{1,}_\d{1,}', html_code)
 
             while posts_list:
                 posts += 1
-
                 html_code = str(get_html(page_link.format(str(posts))))
+                #print(2)
                 posts_list = re.findall(r'wall\d{1,}_\d{1,}', html_code)
 
-            logging.debug("Sent:", str(posts).encode())
+            logging.debug("Sent:" + str(posts))
             client_sock.sendall((str(posts)).encode())
             client_sock.close()
     except Exception:
-        logging.error("КОЗЛЫ СКОРМИЛИ СЕРВЕРУ-ПАРСЕР КАКУЮ-ТО ДРЯНЬ")
+        logging.error("КОЗЛЫ СКОРМИЛИ СЕРВЕРУ-ПАРСЕРY КАКУЮ-ТО ДРЯНЬ")
 
 
 if __name__ == '__main__':
