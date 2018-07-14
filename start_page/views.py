@@ -52,8 +52,9 @@ def verification_link(login, token):
 
 
 def html_creation(user_verification_link):
-    f = open('image1/email.html', 'r')
+    f = open('email.html', 'r')
     #TODO!!!!! здесь не работатет регистрация
+
     string_html = f.read()
     string_html = string_html.format(user_verification_link)
     print(string_html)
@@ -67,6 +68,7 @@ def send_confirm_email(user_email, user_login):
     text_content = user_verification_link
     msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
     msg.attach_alternative(html_creation(user_verification_link), "text/html")
+    print (html_creation(user_verification_link))
     msg.send()
     return user_token
 

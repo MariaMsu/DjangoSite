@@ -111,10 +111,10 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 EMAIL_USE_TLS = True
-EMAIL_HOST = "smtp.yandex.ru"
+EMAIL_HOST = "smtp.rambler.ru"
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "MariaKozevnikov@yandex.ru"
-EMAIL_HOST_PASSWORD = "k0zhepnin@"
+EMAIL_HOST_USER = "okulko@rambler.ru"
+EMAIL_HOST_PASSWORD = "sobako1"
 
 
 
