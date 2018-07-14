@@ -4,4 +4,5 @@ from start_page import views
 urlpatterns = [
     path('', views.auth),
     path('registration/', views.reg),
+    path('verification/', views.verify),
 ]

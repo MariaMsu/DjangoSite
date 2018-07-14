@@ -33,6 +33,8 @@ CALCULATOR_PORT = 53221
 
 PARSER_PORT = 53220
 
+DOMAIN_NAME = 'http://127.0.0.1:8000/'
+
 
 # Application definition
 
