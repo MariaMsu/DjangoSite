@@ -1,7 +1,7 @@
 import hashlib
 import random
 import string
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage, EmailMultiAlternatives
 from django.shortcuts import render, redirect
 from .forms import Auth_form, Reg_form
 from .models import User
@@ -75,8 +75,16 @@ def reg(request):
             errors_list = check_errors(login, password, password_confirm, email)
             if errors_list:
                 return render(request, 'start_page/reg.html', {'form': form, 'errors_list': errors_list})
-            # secret_key = create_secret_key()
-            # send_mail(email, MESSEGE!!!, settings.OWNER_EMAIL)
+
+            #  send_mail("your account verification", "test", settings.EMAIL_HOST_USER, ["dovvakkin@gmail.com"], [("static/justlikemaria.jpg", img_data, "image/jpg")])
+
+            subject, from_email, to = 'your account verification', settings.EMAIL_HOST_USER, 'dovvakkin@gmail.com'
+            text_content = 'This is an important message.'
+            msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+            msg.attach_file("start_page/image/justlikemaria.jpg")
+            msg.send()
+
+
             #TODO
             add_new_user(login, password, email)
             return render(request, 'start_page/reg.html', {'form': form})  # регистрация успешна

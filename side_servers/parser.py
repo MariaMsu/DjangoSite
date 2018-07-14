@@ -50,7 +50,6 @@ def parser_itself(link):
     return posts_iterator
 
 
-
 log_format = '%(levelname)s: %(message)s'
 logging.basicConfig(filename="", format=log_format, level=logging.DEBUG)
 config()
