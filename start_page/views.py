@@ -47,6 +47,14 @@ def check_errors(login, password, password_confirm, email):
     return errors
 
 
+def send_confirm_email(user_email):
+    subject, from_email, to = 'your account verification', settings.EMAIL_HOST_USER, user_email
+    text_content = 'This is an important message.'
+    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+    msg.attach_file("start_page/image/bonus.jpg")
+    msg.send()
+
+
 def auth(request):
     if request.method == 'POST':
         form = Auth_form(request.POST)
@@ -77,13 +85,7 @@ def reg(request):
                 return render(request, 'start_page/reg.html', {'form': form, 'errors_list': errors_list})
 
             #  send_mail("your account verification", "test", settings.EMAIL_HOST_USER, ["dovvakkin@gmail.com"], [("static/justlikemaria.jpg", img_data, "image/jpg")])
-
-            subject, from_email, to = 'your account verification', settings.EMAIL_HOST_USER, 'dovvakkin@gmail.com'
-            text_content = 'This is an important message.'
-            msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-            msg.attach_file("start_page/image/justlikemaria.jpg")
-            msg.send()
-
+            send_confirm_email(email)
 
             #TODO
             add_new_user(login, password, email)
