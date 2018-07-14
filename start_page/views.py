@@ -53,11 +53,9 @@ def verification_link(login, token):
 
 def html_creation(user_verification_link):
     f = open('email.html', 'r')
-    #TODO!!!!! здесь не работатет регистрация
 
     string_html = f.read()
     string_html = string_html.format(user_verification_link)
-    print(string_html)
     return string_html
 
 
