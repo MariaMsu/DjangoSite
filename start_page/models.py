@@ -6,3 +6,4 @@ class User(models.Model):
     password = models.CharField(max_length=128)
     email = models.EmailField()
     token = models.CharField(max_length=64)
+    user_id = models.CharField(max_length=64)

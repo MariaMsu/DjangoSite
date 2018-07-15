@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect
 from .forms import Auth_form, Reg_form
 from .models import User
 from DjangoSite import settings
+from django.http import HttpResponse
 
 
 def login_exist(login):
@@ -16,16 +17,21 @@ def email_exist(email):
     return bool(User.objects.filter(email=email))
 
 
+def token_is_null(login):
+    return User.objects.get(login=login).token == "0"
+
+
+def create_secret_key(size=32, chars=string.ascii_letters + string.digits):
+    return ''.join(random.choice(chars) for _ in range(size))
+
+
 def add_new_user(login, password, email, token):
     hash_fun = hashlib.md5()
     hash_fun.update(password.encode())
     hash_password = hash_fun.digest()
-    user = User.objects.create(login=login, password=hash_password, email=email, token=token)
+    user_id = login + create_secret_key()
+    user = User.objects.create(login=login, password=hash_password, email=email, token=token, user_id=user_id)
     user.save()
-
-
-def create_secret_key(size=16, chars=string.ascii_letters + string.digits):
-    return ''.join(random.choice(chars) for _ in range(size))
 
 
 def password_is_correct(login, password):
@@ -53,9 +59,8 @@ def verification_link(login, token):
 
 def html_creation(user_verification_link):
     f = open('email.html', 'r')
-
     string_html = f.read()
-    string_html = string_html.format(user_verification_link)
+    string_html = string_html.format(user_verification_link, user_verification_link)
     return string_html
 
 
@@ -66,7 +71,6 @@ def send_confirm_email(user_email, user_login):
     text_content = user_verification_link
     msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
     msg.attach_alternative(html_creation(user_verification_link), "text/html")
-    print (html_creation(user_verification_link))
     msg.send()
     return user_token
 
@@ -99,11 +103,14 @@ def auth(request):
             password = form.cleaned_data['user_pass']
             if login_exist(login):
                 if password_is_correct(login, password):
-                    return redirect('/user/')
+                    if token_is_null(login):
+                        request.session["id"] = User.objects.get(login=login).user_id
+                        return redirect('/user/')
+                    return render(request, 'start_page/auth.html',
+                                  {'form': form, 'errors': "your account doesn't seem to be activated"})
             return render(request, 'start_page/auth.html', {'form': form, 'errors': 'password or login is invalid'})
     else:
         form = Auth_form()
-
     return render(request, 'start_page/auth.html', {'form': form})
 
 
