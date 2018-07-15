@@ -10,7 +10,6 @@
     <tr>
         <td>
             <form action="" method="get">
-            {% csrf_token %}
             {{ form.as_p }}
             {% if answer_list %}
                 <div style="color: ForestGreen">
@@ -22,7 +21,9 @@
             <input type="submit" value="send"/>
             </form>
             <br>
-            <h3><a href="/">log out</a></h3></td>
+            <form action="logout/" method="get">
+            <button type="submit">log out</button>
+            </form>
         <td>
             <img src="{% static "shka.jpeg" %}" height="90%" width="90%" align="right"/></td>
     </tr>

@@ -15,6 +15,11 @@ def reply_correction(data):
         return data
 
 
+def log_out(request):
+    request.session.delete()
+    return redirect("/")
+
+
 def index(request):
     log_format = '%(levelname)s: %(message)s'
     logging.basicConfig(filename="", format=log_format, level=logging.DEBUG)
@@ -59,7 +64,6 @@ def index(request):
                         logging.debug("server_calculator_reply:" + expression_result)
                     except Exception:
                         logging.error("Сервер 'calculator' устал и прилёг отдохнуть")
-
                     return render(request, 'user_page/user_page.html', {'form': form, 'answer_list': answer_list})
 
                 answer_list.append('link is invalid')
