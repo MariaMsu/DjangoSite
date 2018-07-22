@@ -1,45 +1,9 @@
-import hashlib
-import random
-import string
 from django.core.mail import EmailMultiAlternatives
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import Auth_form, Reg_form
-from .models import User
+from .models import *
 from DjangoSite import settings
-from django.http import HttpResponse
-
-
-def login_exist(login):
-    return bool(User.objects.filter(login=login))
-
-
-def email_exist(email):
-    return bool(User.objects.filter(email=email))
-
-
-def token_is_null(login):
-    return User.objects.get(login=login).token == "0"
-
-
-def create_secret_key(size=32, chars=string.ascii_letters + string.digits):
-    return ''.join(random.choice(chars) for _ in range(size))
-
-
-def add_new_user(login, password, email, token):
-    hash_fun = hashlib.md5()
-    hash_fun.update(password.encode())
-    hash_password = hash_fun.digest()
-    user_id = login + create_secret_key()
-    user = User.objects.create(login=login, password=hash_password, email=email, token=token, user_id=user_id)
-    user.save()
-
-
-def password_is_correct(login, password):
-    model = User.objects.get(login=login)
-    hash_fun = hashlib.md5()
-    hash_fun.update(password.encode())
-    hash_password = hash_fun.digest()
-    return str(model.password) == str(hash_password)
 
 
 def check_errors(login, password, password_confirm, email):
@@ -75,17 +39,6 @@ def send_confirm_email(user_email, user_login):
     return user_token
 
 
-def accordance_login_and_token(login, token):
-    token_is_correct = False
-    user = User.objects.filter(login=login)
-    if user:
-        if str(user[0].token) == token:
-            user[0].token = 0
-            user[0].save()
-            token_is_correct = True
-    return token_is_correct
-
-
 def verify(request):
     if request.method == 'GET':
         login = request.GET['login']
@@ -95,7 +48,15 @@ def verify(request):
     return render(request, "start_page/verification_is_successfully.html", {'status': False})
 
 
+def set_id_into_cookies(login):
+    response = redirect("/user/")
+    response.set_cookie("id", get_id(login), 60*60*24)
+    return response
+
+
 def auth(request):
+    if is_logged_in(request):
+        return redirect("/user/")
     if request.method == 'POST':
         form = Auth_form(request.POST)
         if form.is_valid():
@@ -104,14 +65,19 @@ def auth(request):
             if login_exist(login):
                 if password_is_correct(login, password):
                     if token_is_null(login):
-                        request.session["id"] = User.objects.get(login=login).user_id
-                        return redirect('/user/')
-                    return render(request, 'start_page/auth.html',
+                        response = set_id_into_cookies(login)
+                        return response
+                    return render(request,
+                                  'start_page/auth.html',
                                   {'form': form, 'errors': "your account doesn't seem to be activated"})
-            return render(request, 'start_page/auth.html', {'form': form, 'errors': 'password or login is invalid'})
+            return render(request,
+                          'start_page/auth.html',
+                          {'form': form, 'errors': 'password or login is invalid'})
     else:
         form = Auth_form()
-    return render(request, 'start_page/auth.html', {'form': form})
+    return render(request,
+                  'start_page/auth.html',
+                  {'form': form})
 
 
 def reg(request):

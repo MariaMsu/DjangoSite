@@ -16,16 +16,16 @@ def reply_correction(data):
 
 
 def log_out(request):
-    request.session.delete()
-    return redirect("/")
+    response = redirect("/")
+    response.delete_cookie("id")
+    return response
 
 
 def index(request):
     log_format = '%(levelname)s: %(message)s'
     logging.basicConfig(filename="", format=log_format, level=logging.DEBUG)
-
-    if "id" in request.session:
-        id_cookie = request.session.get("id")
+    if "id" in request.COOKIES:
+        id_cookie = request.COOKIES.get("id")
         users = start_page.models.User.objects.filter(user_id=id_cookie)
         if users:  # вошло
             form = User_form(request.GET)
