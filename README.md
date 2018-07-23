@@ -19,9 +19,9 @@ File "manage.py", line 14, in <module>
     ) from exc  
 ImportError: Couldn't import Django
 ```
-, то уставновить django:
-    ```sudo apt install python3-pip```
-    ```pip3 install django```  
+, то уставновить django:  
+```sudo apt install python3-pip```  
+```pip3 install django```  
 3. перейти по адресу http://127.0.0.1:8000/    
   
 > теперь можно регистрироваться, но если вам этого мало, то запустите сервера, выполняющие обработку запросов:  
