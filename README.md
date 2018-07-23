@@ -14,11 +14,11 @@
 1. ```python3 manage.py runserver``` из папки DjangoSite  
 
 2. если вы словили ошибку  
-    ```
-    File "manage.py", line 14, in <module>  
+```
+File "manage.py", line 14, in <module>  
     ) from exc  
-    ImportError: Couldn't import Django
-    ```
+ImportError: Couldn't import Django
+```
 , то уставновить django:
     ```sudo apt install python3-pip```
     ```pip3 install django```  
