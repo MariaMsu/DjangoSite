@@ -18,10 +18,10 @@
     ImportError: Couldn't import Django```
 , то уставновить django:
     ```sudo apt install python3-pip```
-    ```pip3 install django```
+    ```pip3 install django```  
 3. перейти по адресу http://127.0.0.1:8000/    
   
----теперь можно регистрироваться, но если вам этого мало, то запустите сервера, выполняющие обработку запросов:---  
+> теперь можно регистрироваться, но если вам этого мало, то запустите сервера, выполняющие обработку запросов:  
 
 4. ```python3 calculator.py``` из папки DjangoSite/side_servers
 5. ```python3 parser.py``` из папки DjangoSite/side_servers
