@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="15c3250d-d8a7-4234-a98e-49903d52c312" name="Default" comment="added mail confirmation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DjangoSite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/DjangoSite/settings.py" afterDir="false" />
+=======
+    <list default="true" id="15c3250d-d8a7-4234-a98e-49903d52c312" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< Updated upstream
+>>>>>>> 0c8fe6b881420b70491037f3f507fa7ef0c73ca3
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/start_page/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/start_page/views.py" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/user_page/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user_page/views.py" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+>>>>>>> Stashed changes
+>>>>>>> 0c8fe6b881420b70491037f3f507fa7ef0c73ca3
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -39,7 +52,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+=======
+<<<<<<< Updated upstream
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+>>>>>>> 0c8fe6b881420b70491037f3f507fa7ef0c73ca3
         <entry file="file://$PROJECT_DIR$/start_page/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="235">
@@ -83,6 +101,13 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="432">
               <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
+=======
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/start_page/forms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="62" />
+>>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
@@ -101,15 +126,21 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DjangoSite/urls.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state relative-caret-position="270">
               <caret line="15" selection-start-line="15" selection-end-line="15" />
               <folding>
                 <element signature="e#634#666#0" expanded="true" />
               </folding>
+=======
+            <state relative-caret-position="72">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+>>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< Updated upstream
       <file leaf-file-name="tests.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/start_page/tests.py">
           <provider selected="true" editor-type-id="text-editor" />
@@ -123,6 +154,13 @@
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
+=======
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/start_page/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="18">
+              <caret line="5" column="38" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="38" />
+>>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
@@ -130,11 +168,20 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user_page/views.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="342">
+=======
+<<<<<<< Updated upstream
+            <state relative-caret-position="236">
+>>>>>>> 0c8fe6b881420b70491037f3f507fa7ef0c73ca3
               <caret line="25" column="76" selection-start-line="25" selection-start-column="76" selection-end-line="25" selection-end-column="76" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
+=======
+            <state relative-caret-position="144">
+              <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+>>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
@@ -219,11 +266,14 @@
             <path>
               <item name="DjangoSite" type="b2602c69:ProjectViewProjectNode" />
               <item name="DjangoSite" type="462c0819:PsiDirectoryNode" />
+<<<<<<< Updated upstream
               <item name="DjangoSite" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DjangoSite" type="b2602c69:ProjectViewProjectNode" />
               <item name="DjangoSite" type="462c0819:PsiDirectoryNode" />
+=======
+>>>>>>> Stashed changes
               <item name="start_page" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -355,7 +405,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="launchJavascriptDebuger" value="false" />
+<<<<<<< Updated upstream
       <option name="port" value="8000" />
+=======
+      <option name="port" value="8002" />
+>>>>>>> Stashed changes
       <option name="host" value="" />
       <option name="additionalOptions" value="" />
       <option name="browserUrl" value="http://127.0.0.1:8000/" />
@@ -426,7 +480,14 @@
       <option name="project" value="LOCAL" />
       <updated>1531563917858</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added button &quot;log out&quot;">
+      <created>1531653488053</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1531653488053</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView">
@@ -439,8 +500,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< Updated upstream
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
+=======
+    <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
+>>>>>>> Stashed changes
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32900944" />
       <window_info anchor="bottom" id="manage.py@DjangoSite" order="7" weight="0.24646227" />
@@ -450,7 +515,15 @@
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.20990565" />
       <window_info anchor="bottom" id="Terminal" order="7" />
+<<<<<<< HEAD
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12986112" />
+=======
+<<<<<<< Updated upstream
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12986112" />
+=======
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13377556" />
+>>>>>>> Stashed changes
+>>>>>>> 0c8fe6b881420b70491037f3f507fa7ef0c73ca3
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.32946378" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -461,6 +534,10 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+<<<<<<< Updated upstream
+=======
+      <window_info anchor="bottom" id="manage.py@DjangoSite" order="7" weight="0.2455404" />
+>>>>>>> Stashed changes
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -483,7 +560,8 @@
     <MESSAGE value="the first complete working version of the application" />
     <MESSAGE value="-" />
     <MESSAGE value="added mail confirmation" />
-    <option name="LAST_COMMIT_MESSAGE" value="added mail confirmation" />
+    <MESSAGE value="added button &quot;log out&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="added button &quot;log out&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -543,10 +621,14 @@
     <entry file="file://$PROJECT_DIR$/start_page/templates/start_page/verification_is_successfully.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/start_page/templates/start_page/auth.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/side_servers/parser.py">
+=======
+    <entry file="file://$PROJECT_DIR$/start_page/models.py">
+>>>>>>> Stashed changes
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="28" column="19" selection-start-line="23" selection-end-line="28" selection-end-column="19" />
@@ -579,6 +661,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/start_page/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -612,6 +695,33 @@
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
+=======
+    <entry file="file://$PROJECT_DIR$/user_page/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_page/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_page/templates/user_page/user_page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="29" column="8" lean-forward="true" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/start_page/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="62" />
+>>>>>>> Stashed changes
         </state>
       </provider>
     </entry>
@@ -631,11 +741,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/start_page/views.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="235">
           <caret line="33" column="87" selection-start-line="33" selection-start-column="65" selection-end-line="33" selection-end-column="87" />
+=======
+<<<<<<< Updated upstream
+        <state relative-caret-position="290">
+          <caret line="74" column="41" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
+>>>>>>> 0c8fe6b881420b70491037f3f507fa7ef0c73ca3
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
+=======
+        <state relative-caret-position="18">
+          <caret line="5" column="38" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="38" />
+>>>>>>> Stashed changes
         </state>
       </provider>
     </entry>
