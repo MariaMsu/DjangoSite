@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -25,16 +24,15 @@ SECRET_KEY = '#jvo10ad2dfoijl^03e)yfld9@yh49k9j2k15hdhpv*64#yreg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["40.118.67.75", "127.0.0.1"]
 
-OWNER_EMAIL = 'MariaKozevnikov@gmail.com'
+OWNER_EMAIL = "MariaKozevnikov@gmail.com"
 
 CALCULATOR_PORT = 53221
 
 PARSER_PORT = 53220
 
-DOMAIN_NAME = 'http://127.0.0.1:8000/'
-
+DOMAIN_NAME = "http://127.0.0.1:8000/"
 
 # Application definition
 
@@ -80,7 +78,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'DjangoSite.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
@@ -90,7 +87,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -116,8 +112,6 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = "okulko@rambler.ru"
 EMAIL_HOST_PASSWORD = "sobako1"
 
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
@@ -130,7 +124,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
