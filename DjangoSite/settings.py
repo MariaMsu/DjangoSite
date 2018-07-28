@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
-
+import logging
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -129,3 +129,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+log_format = '%(asctime)s %(levelname)s: %(message)s'
+#logging.basicConfig(filename="/home/masha/Desktop/DjangoSite/logger.log", format=log_format, level=logging.DEBUG)
+logging.basicConfig(filename=os.path.join(BASE_DIR, 'logger.log'), format=log_format, level=logging.DEBUG)

@@ -1,6 +1,4 @@
-import logging
 import socket
-
 from django.shortcuts import render, redirect
 from .forms import User_form
 from DjangoSite import settings
@@ -9,6 +7,7 @@ import start_page.models
 
 def reply_correction(data):
     data = str(data)
+    print(data)
     if data[0] == 'b':
         return data[2:len(data) - 1]
     else:
@@ -22,8 +21,6 @@ def log_out(request):
 
 
 def index(request):
-    log_format = '%(levelname)s: %(message)s'
-    logging.basicConfig(filename="", format=log_format, level=logging.DEBUG)
     if "id" in request.COOKIES:
         id_cookie = request.COOKIES.get("id")
         users = start_page.models.User.objects.filter(user_id=id_cookie)
@@ -43,11 +40,10 @@ def index(request):
                     client_sock.sendall(link.encode())
                     parse_result = reply_correction(client_sock.recv(1024))
                     client_sock.close()
-
                     answer_list.append('number of posts:' + parse_result)
-                    logging.debug("server_parser_reply:" + str(parse_result))
+                    settings.logging.debug("server_parser_reply:" + str(parse_result))
                 except Exception:
-                    logging.error("Сервер 'parser' устал и прилёг отдохнуть")
+                    settings.logging.error("Сервер 'parser' устал и прилёг отдохнуть")
 
                 if parse_result != "-1":
                     expression += ('+' + parse_result)
@@ -60,10 +56,10 @@ def index(request):
                         client_sock.close()
 
                         answer_list.append('answer:' + expression_result)
-                        logging.debug("expression:" + expression)
-                        logging.debug("server_calculator_reply:" + expression_result)
+                        settings.logging.debug("expression:" + expression)
+                        settings.logging.debug("server_calculator_reply:" + expression_result)
                     except Exception:
-                        logging.error("Сервер 'calculator' устал и прилёг отдохнуть")
+                        settings.logging.error("Сервер 'calculator' устал и прилёг отдохнуть")
                     return render(request, 'user_page/user_page.html', {'form': form, 'answer_list': answer_list})
 
                 answer_list.append('link is invalid')

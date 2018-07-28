@@ -1,10 +1,5 @@
-import logging
-
 from django.core.mail import EmailMultiAlternatives
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
-
-
 from .forms import Auth_form, Reg_form
 from .models import *
 from DjangoSite import settings
@@ -26,14 +21,12 @@ def verification_link(login, token):
 
 
 def html_creation(user_verification_link):
-    log_format = '%(levelname)s: %(message)s'
-    logging.basicConfig(filename="", format=log_format, level=logging.DEBUG)
     try:
         f = open('email.html', 'r')
         string_html = f.read()
         string_html = string_html.format(user_verification_link, user_verification_link)
     except:
-        logging.info("email.html потерян в пути")
+        settings.logging.info("email.html потерян в пути")
         string_html = "click here to confirm your email" + str(user_verification_link)
     return string_html
 
