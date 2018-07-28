@@ -33,3 +33,6 @@ ImportError: Couldn't import Django
 пример ввода:
     link to vk profile: https://vk.com/elyaishere
     any expression (only "+" and "-"): 2-1
+
+
+чтоб оно заработало на сервере: https://habr.com/post/226419
